@@ -39,6 +39,8 @@ module.exports = {
     },
     plugins: ['vue', 'prettier'],
     rules: {
+        'prettier/prettier': 'error',
+
         'prefer-promise-reject-errors': 'off',
         'vue/no-setup-props-destructure': 'off',
 
@@ -69,17 +71,17 @@ module.exports = {
                 alphabetical: false,
             },
         ],
-        'vue/max-attributes-per-line': [
-            'error',
-            {
-                singleline: {
-                    max: 1,
-                },
-                multiline: {
-                    max: 1,
-                },
-            },
-        ],
+        // 'vue/max-attributes-per-line': [
+        //     'error',
+        //     {
+        //         singleline: {
+        //             max: 1,
+        //         },
+        //         multiline: {
+        //             max: 1,
+        //         },
+        //     },
+        // ],
         // 'vue/html-self-closing': [
         //     'error',
         //     {
@@ -169,7 +171,5 @@ module.exports = {
                 ],
             },
         ],
-
-        'prettier/prettier': 'error',
     },
 };

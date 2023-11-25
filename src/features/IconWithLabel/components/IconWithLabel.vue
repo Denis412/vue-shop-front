@@ -2,7 +2,8 @@
     <div class="icon-with-label">
         <span v-if="left">{{ label }}</span>
 
-        <app-icon :name="icon" fill="primary-text-color" />
+        <app-icon
+:name="icon" fill="primary-text-color" />
 
         <span v-if="!left">{{ label }}</span>
     </div>

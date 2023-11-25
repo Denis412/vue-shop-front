@@ -1,14 +1,23 @@
 <template>
-    <icon-with-label icon="language" :label="currentLanguage" @click="onSwitch" />
+    <icon-with-label
+        icon="language"
+        class="lang__switch"
+        :label="currentLanguage"
+        @click="switchLocale"
+    />
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { computed } from 'vue';
 import { IconWithLabel } from '@features/IconWithLabel';
+import useSwitchLocale from '../composables/useSwitchLocale';
 
-const currentLanguage = ref('RU');
-
-const onSwitch = () => {};
+const { switchLocale, locale } = useSwitchLocale();
+const currentLanguage = computed(() => locale.value.toUpperCase());
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.lang__switch {
+    user-select: none;
+}
+</style>

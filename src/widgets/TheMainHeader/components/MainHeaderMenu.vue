@@ -15,9 +15,7 @@
 <script setup>
 import { reactive } from 'vue';
 import { IconWithLabel } from '@features/IconWithLabel';
-import { LanguageSwitchWithIcon } from '@features/LanguageSwitch';
-
-const emit = defineEmits(['selectItem', 'switchLang']);
+import { LanguageSwitchWithIcon, useSwitchLocale } from '@features/LanguageSwitch';
 
 defineProps({
     languageConfig: {
@@ -28,18 +26,21 @@ defineProps({
         }),
     },
 });
+const emit = defineEmits(['selectItem', 'switchLang']);
+
+const { getAttribute } = useSwitchLocale();
 
 const items = reactive([
     {
         icon: 'shop',
-        label: 'Меню',
+        label: getAttribute('shop'),
         handler() {
             emit('selectItem', this);
         },
     },
     {
         icon: 'cart',
-        label: 'Корзина',
+        label: getAttribute('cart'),
         handler() {
             emit('selectItem', this);
         },

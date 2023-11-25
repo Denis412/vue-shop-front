@@ -4,6 +4,7 @@ import App from './App.vue';
 import router from './router';
 import pinia from './store';
 import i18n from './i18n';
+import { useI18n } from 'vue-i18n';
 
 import {
     AppButton,
@@ -15,9 +16,15 @@ import {
     AppIcon,
 } from '@shared';
 
-const app = createApp(App);
+const app = createApp(App, {
+    setup() {
+        const { t } = useI18n();
 
-app.use(router).use(pinia).use(i18n);
+        return { t };
+    },
+}).use(i18n);
+
+app.use(router).use(pinia);
 
 app.component('AppButton', AppButton);
 app.component('AppCheckbox', AppCheckbox);
