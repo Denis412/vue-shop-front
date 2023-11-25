@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Ovsyanka';
+    src:
+        local('Ovsyanka'),
+        url('../../../public/assets/fonts/ovsyanka/ovsyanka.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Ovsyanka-Press';
+    src:
+        local('Ovsyanka-Press'),
+        url('../../../public/assets/fonts/ovsyanka/ovsyanka_press.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Better-Together-Condensed';
+    src: local('Better-Together'),
+        url('../../../public/assets/fonts/better_together/better_together_condensed.otf');
+}
+
+@font-face {
+    font-family: 'Better-Together-Caps';
+    src: local('Better-Together'),
+        url('../../../public/assets/fonts/better_together/better_together_caps.otf');
+}
+
+@font-face {
+    font-family: 'Better-Together-Script';
+    src: local('Better-Together'),
+        url('../../../public/assets/fonts/better_together/better_together_script.otf');
+}
+
+@font-face {
+    font-family: 'Better-Together-Spaced';
+    src: local('Better-Together'),
+        url('../../../public/assets/fonts/better_together/better_together_spaced.otf');
+}
+
+.text-h1 {
+    font-family: 'Better-Together-Caps';
+    font-size: 4rem;
+    font-weight: 400;
+    color: $primary-text-color;
+}
+
+.text-h2 {
+    font-family: 'Ovsyanka-Press';
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.text-title {
+    font-family: 'Better-Together-Caps';
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: $primary-text-color;
+}

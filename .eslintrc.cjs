@@ -10,6 +10,7 @@ module.exports = {
         'plugin:vue/vue3-recommended',
         'plugin:vue/vue3-essential',
         'plugin:vue/vue3-strongly-recommended',
+        'plugin:prettier/recommended',
     ],
     overrides: [
         {
@@ -79,18 +80,18 @@ module.exports = {
                 },
             },
         ],
-        'vue/html-self-closing': [
-            'error',
-            {
-                html: {
-                    void: 'never',
-                    normal: 'always',
-                    component: 'always',
-                },
-                svg: 'always',
-                math: 'always',
-            },
-        ],
+        // 'vue/html-self-closing': [
+        //     'error',
+        //     {
+        //         html: {
+        //             void: 'never',
+        //             normal: 'always',
+        //             component: 'always',
+        //         },
+        //         svg: 'always',
+        //         math: 'always',
+        //     },
+        // ],
         'vue/html-indent': [
             'error',
             4,
@@ -169,6 +170,6 @@ module.exports = {
             },
         ],
 
-        // 'prettier/prettier': 'error',
+        'prettier/prettier': 'error',
     },
 };
