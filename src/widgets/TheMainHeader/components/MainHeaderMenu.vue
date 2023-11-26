@@ -33,13 +33,15 @@ const { getAttribute } = useSwitchLocale();
 const items = reactive([
     {
         icon: 'shop',
-        label: getAttribute('shop'),
+        name: 'menu',
+        label: getAttribute('menu'),
         handler() {
             emit('selectItem', this);
         },
     },
     {
         icon: 'cart',
+        name: 'cart',
         label: getAttribute('cart'),
         handler() {
             emit('selectItem', this);

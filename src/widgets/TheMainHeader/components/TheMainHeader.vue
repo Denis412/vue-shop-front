@@ -7,10 +7,15 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 import MainHeaderMenu from './MainHeaderMenu.vue';
 
-const onSelectItem = (item) => {
-    console.log(item);
+const router = useRouter();
+
+const onSelectItem = async (item) => {
+    await router.push({
+        name: item.name,
+    });
 };
 </script>
 

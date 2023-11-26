@@ -8,6 +8,16 @@ const routes = [
                 name: 'home',
                 component: () => import('@pages/HomePage/components/HomePage.vue'),
             },
+            {
+                path: 'shop',
+                name: 'shop',
+                component: () => import('@pages/HomePage/components/HomePage.vue'),
+            },
+            {
+                path: 'cart',
+                name: 'cart',
+                component: () => import('@pages/HomePage/components/HomePage.vue'),
+            },
         ],
     },
 ];
