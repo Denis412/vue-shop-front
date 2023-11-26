@@ -14,6 +14,10 @@ import {
     AppSelect,
     AppTextarea,
     AppIcon,
+    AppLayout,
+    AppPageContainer,
+    AppHeader,
+    AppFooter,
 } from '@shared';
 
 const app = createApp(App, {
@@ -33,5 +37,9 @@ app.component('AppRadio', AppRadio);
 app.component('AppSelect', AppSelect);
 app.component('AppTextarea', AppTextarea);
 app.component('AppIcon', AppIcon);
+app.component('AppLayout', AppLayout);
+app.component('AppPageContainer', AppPageContainer);
+app.component('AppHeader', AppHeader);
+app.component('AppFooter', AppFooter);
 
 app.mount('#app');
