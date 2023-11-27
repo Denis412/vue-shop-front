@@ -16,8 +16,18 @@ a {
     color: white;
 }
 
+.w-100p {
+    max-width: 100%;
+    width: 100%;
+}
+
 .flex {
     display: flex;
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center;
 }
 
 .max-content {
@@ -63,6 +73,33 @@ a {
 
 .text-primary {
     color: $primary-text-color;
+}
+
+.mt-16 {
+    margin-top: 16px;
+}
+
+.mb-16 {
+    margin-bottom: 16px;
+}
+
+.mb-32 {
+    margin-bottom: 32px;
+}
+
+.mb-64 {
+    margin-bottom: 64px;
+}
+
+.mt-120 {
+    margin-top: 120px;
+}
+.mb-120 {
+    margin-bottom: 120px;
+}
+
+.container {
+    max-width: 1024px;
 }
 
 .gray-y-scrollbar {

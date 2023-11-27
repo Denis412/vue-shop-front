@@ -1,0 +1,15 @@
+{
+    "banner": {
+        "title": "Recharge your batteries with our coffee shop!",
+        "subtitle": "We have created the perfect place for true coffee connoisseurs. Immerse yourself in the atmosphere of comfort and enjoy a rich selection of aromatic drinks, fresh grains and delicious desserts and snacks. Come and discover a real coffee paradise.",
+        "button": "Open menu"
+    },
+    "services": {
+        "title": "A combination of culture, coffee and first-class service"
+    },
+    "popularity": {
+        "title": "Popular positions",
+        "subtitle": "Our team puts a lot of effort into creating high-quality coffee and pastries. In each of our products, you can feel a piece of the love we have invested.",
+        "button": "Show all menus"
+    }
+}

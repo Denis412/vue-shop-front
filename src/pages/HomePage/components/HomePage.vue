@@ -2,28 +2,41 @@
     <div class="home-page text-primary">
         <div class="home-page__banner">
             <div class="home-page__banner-text__container">
-                <h2 class="text-h2">Зарядись энергией вместе с нашей кофейней!</h2>
+                <h2 class="text-h2">{{ $t('banner.title') }}</h2>
 
                 <p>
-                    Мы создали идеальное место для настоящих ценителей кофе. Погрузитесь в атмосферу
-                    комфорта и насладитесь богатым выбором ароматных напитков, свежих зерен и
-                    вкусных десертов и закусок. Приходите и откройте для себя настоящий кофейный
-                    рай.
+                    {{ $t('banner.subtitle') }}
                 </p>
 
-                <app-button label="Открыть меню" />
+                <app-button :label="$t('banner.button')" />
             </div>
 
             <div class="home-page__banner_img__container" />
         </div>
 
-        <section class="home-page__section">
-            <h2 class="menu__section_title text-h2 text-center">
-                Сочетание культуры, кофе и первоклассного обслуживания
-            </h2>
-        </section>
+        <home-page-section :title="$t('services.title')">
+            <service-cards-list />
+        </home-page-section>
+
+        <home-page-section
+            class="mt-120 mb-120"
+            :title="$t('popularity.title')"
+            :subtitle="$t('popularity.subtitle')"
+        >
+            <products-list>
+                <template #actions>
+                    <app-button :label="$t('popularity.button')" />
+                </template>
+            </products-list>
+        </home-page-section>
     </div>
 </template>
+
+<script setup>
+import { ServiceCardsList } from '@widgets/ServiceCardsList';
+import { ProductsList } from '@widgets/ProductsList';
+import HomePageSection from './HomePageSection.vue';
+</script>
 
 <style scoped lang="scss">
 .home-page {
@@ -72,5 +85,6 @@
 .menu__section_title {
     margin: 0 auto;
     max-width: 856px;
+    margin-bottom: 64px;
 }
 </style>

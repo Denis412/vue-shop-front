@@ -18,6 +18,7 @@ import {
     AppPageContainer,
     AppHeader,
     AppFooter,
+    AppCard,
 } from '@shared';
 
 const app = createApp(App, {
@@ -41,5 +42,6 @@ app.component('AppLayout', AppLayout);
 app.component('AppPageContainer', AppPageContainer);
 app.component('AppHeader', AppHeader);
 app.component('AppFooter', AppFooter);
+app.component('AppCard', AppCard);
 
 app.mount('#app');
