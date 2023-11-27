@@ -1,16 +1,25 @@
 <template>
-    <div class="icon-with-label">
-        <span v-if="left">{{ label }}</span>
+    <div class="icon-with-label" :class="classes">
+        <slot :label="label" :icon="icon">
+            <slot v-if="left" name="left" :label="label">
+                <span :class="textClasses">{{ label }}</span>
+            </slot>
 
-        <app-icon
-:name="icon" fill="primary-text-color" />
+            <slot name="icon" :icon="icon">
+                <app-icon :name="icon" :fill="fillIcon" :stroke="strokeIcon" />
+            </slot>
 
-        <span v-if="!left">{{ label }}</span>
+            <slot v-if="!left" name="right" :label="label">
+                <span :class="textClasses">{{ label }}</span>
+            </slot>
+        </slot>
     </div>
 </template>
 
 <script setup>
-defineProps({
+import { computed } from 'vue';
+
+const props = defineProps({
     icon: {
         type: String,
         default: '',
@@ -23,7 +32,39 @@ defineProps({
         type: Boolean,
         default: false,
     },
+    fillIcon: {
+        type: String,
+        default: 'primary-text-color',
+    },
+    strokeIcon: {
+        type: String,
+        default: '',
+    },
+    gap: {
+        type: String,
+        default: '0.75rem',
+    },
+    pointer: {
+        type: Boolean,
+        default: false,
+    },
+    textClass: {
+        type: String,
+        default: '',
+    },
 });
+
+const classes = computed(() => ({
+    pointer: props.pointer,
+}));
+
+const textClasses = computed(() =>
+    props.textClass.split(' ').reduce((acc, cl) => {
+        acc[cl] = true;
+
+        return acc;
+    }, {}),
+);
 </script>
 
 <style scoped lang="scss">
@@ -31,7 +72,6 @@ defineProps({
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    gap: 0.75em;
-    cursor: pointer;
+    gap: v-bind(gap);
 }
 </style>

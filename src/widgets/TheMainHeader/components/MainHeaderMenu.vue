@@ -5,6 +5,7 @@
             :key="item.label"
             :icon="item.icon"
             :label="item.label"
+            pointer
             @click="item.handler()"
         />
 

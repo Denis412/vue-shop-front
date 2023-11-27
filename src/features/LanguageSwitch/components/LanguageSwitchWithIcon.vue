@@ -3,6 +3,7 @@
         icon="language"
         class="lang__switch"
         :label="currentLanguage"
+        pointer
         @click="switchLocale"
     />
 </template>

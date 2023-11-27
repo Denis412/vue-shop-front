@@ -1,5 +1,5 @@
 <template>
-    <div class="home-page">
+    <div class="home-page text-primary">
         <div class="home-page__banner">
             <div class="home-page__banner-text__container">
                 <h2 class="text-h2">Зарядись энергией вместе с нашей кофейней!</h2>

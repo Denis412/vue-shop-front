@@ -9,8 +9,8 @@ const routes = [
                 component: () => import('@pages/HomePage/components/HomePage.vue'),
             },
             {
-                path: 'shop',
-                name: 'shop',
+                path: 'menu',
+                name: 'menu',
                 component: () => import('@pages/HomePage/components/HomePage.vue'),
             },
             {
