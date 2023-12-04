@@ -8,7 +8,7 @@
             </div>
 
             <div class="product__item-name">
-                <span class="text-card-title">{{ product.name }}</span>
+                <span class="text-card-title">{{ product.label }}</span>
             </div>
 
             <div class="product__item-price">
@@ -28,7 +28,9 @@
 </template>
 
 <script setup>
-defineProps({
+import axios from '@app/axios';
+
+const props = defineProps({
     product: {
         type: Object,
         required: true,
@@ -36,7 +38,19 @@ defineProps({
     },
 });
 
-const onAddToCart = () => {};
+const onAddToCart = async () => {
+    await axios.post(
+        'product-in-cart',
+        {
+            product: {
+                objectId: props.product.id,
+            },
+        },
+        {
+            withCredentials: true,
+        },
+    );
+};
 </script>
 
 <style scoped lang="scss">
@@ -84,6 +98,7 @@ const onAddToCart = () => {};
         max-width: 196px;
         max-height: 196px;
         width: 100%;
+        // height: 100%;
     }
 
     &_inner {

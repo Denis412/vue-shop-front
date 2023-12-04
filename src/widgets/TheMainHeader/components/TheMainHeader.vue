@@ -1,6 +1,6 @@
 <template>
     <app-header class="main__header">
-        <h1 class="text-h1">Fragrante</h1>
+        <h1 class="text-h1 pointer" @click="redirectToHome">Fragrante</h1>
 
         <main-header-menu @select-item="onSelectItem" />
     </app-header>
@@ -15,6 +15,12 @@ const router = useRouter();
 const onSelectItem = async (item) => {
     await router.push({
         name: item.name,
+    });
+};
+
+const redirectToHome = async () => {
+    await router.push({
+        name: 'home',
     });
 };
 </script>

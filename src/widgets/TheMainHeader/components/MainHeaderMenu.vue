@@ -5,18 +5,30 @@
             :key="item.label"
             :icon="item.icon"
             :label="item.label"
+            :notify="item.notify"
             pointer
             @click="item.handler()"
         />
 
         <language-switch-with-icon />
+        <app-icon
+            name="logout"
+            fill="#800000"
+            class="logout__icon pointer flex items-center"
+            @click="onLogout"
+        />
     </div>
 </template>
 
 <script setup>
 import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
+
 import { IconWithLabel } from '@features/IconWithLabel';
 import { LanguageSwitchWithIcon, useSwitchLocale } from '@features/LanguageSwitch';
+import axios from '@app/axios';
+
+const router = useRouter();
 
 defineProps({
     languageConfig: {
@@ -44,16 +56,31 @@ const items = reactive([
         icon: 'cart',
         name: 'cart',
         label: getAttribute('cart'),
+        notify: true,
         handler() {
             emit('selectItem', this);
         },
     },
 ]);
+
+const onLogout = async () => {
+    await axios.post('users/logout');
+
+    await router.push({
+        name: 'login',
+    });
+};
 </script>
 
 <style scoped lang="scss">
 .main-header__menu {
     display: flex;
     gap: 2rem;
+}
+
+.logout__icon {
+    // position: absolute;
+    // top: 5px;
+    // right: 5px;
 }
 </style>

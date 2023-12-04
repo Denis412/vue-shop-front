@@ -6,8 +6,10 @@
             </slot>
 
             <slot name="icon" :icon="icon">
-                <app-icon :name="icon" :fill="fillIcon" :stroke="strokeIcon" />
+                <app-icon :name="icon" :fill="fillIcon" :stroke="strokeIcon" :notify="notify" />
             </slot>
+
+            <slot name="append"></slot>
 
             <slot v-if="!left" name="right" :label="label">
                 <span :class="textClasses">{{ label }}</span>
@@ -27,6 +29,10 @@ const props = defineProps({
     label: {
         type: String,
         default: '',
+    },
+    notify: {
+        type: Boolean,
+        default: false,
     },
     left: {
         type: Boolean,
@@ -69,6 +75,7 @@ const textClasses = computed(() =>
 
 <style scoped lang="scss">
 .icon-with-label {
+    position: relative;
     display: flex;
     align-items: center;
     flex-wrap: nowrap;

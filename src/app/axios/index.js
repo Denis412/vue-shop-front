@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-const axiosInstance = axios.create({
-    baseURL: import.meta.env.API_URL,
+axios.defaults.withCredentials = true;
+
+const instance = axios.create({
+    baseURL: import.meta.env.API_URL || 'https://localhost:3000/',
+    withCredentials: true,
 });
 
-export default axiosInstance;
+export default instance;

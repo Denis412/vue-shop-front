@@ -1,5 +1,7 @@
 <template>
     <div class="svg__container">
+        <div v-if="notify" class="notification__icon"></div>
+
         <svg
             width="1em"
             height="1em"
@@ -10,7 +12,7 @@
             v-html="path"
         />
 
-        <slot name="default"></slot>
+        <slot name="default"> </slot>
     </div>
 </template>
 
@@ -24,6 +26,7 @@ const props = defineProps({
     fill: String,
     stroke: String,
     name: String,
+    notify: Boolean,
 });
 
 const propColor = computed(() => props.fill ?? props.stroke);
@@ -53,5 +56,15 @@ svg {
 
 .svg__container {
     position: relative;
+}
+
+.notification__icon {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: #f97316;
 }
 </style>

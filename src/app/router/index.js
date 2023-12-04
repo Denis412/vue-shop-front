@@ -6,4 +6,16 @@ const router = createRouter({
     routes,
 });
 
+router.beforeEach((to) => {
+    if (to.meta.isAuthenticated) {
+        const isAuth = localStorage.getItem('username');
+        if (!isAuth) return { name: 'auth' };
+    }
+
+    return true;
+});
+
+router.beforeResolve(() => {});
+router.afterEach(() => {});
+
 export default router;

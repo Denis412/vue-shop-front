@@ -11,10 +11,14 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+// import { reactive } from 'vue';
 import ProductsListItem from './ProductsListItem.vue';
 
 defineProps({
+    products: {
+        type: Array,
+        default: () => [],
+    },
     columns: {
         type: String,
         default: '1fr 1fr 1fr',
@@ -24,72 +28,6 @@ defineProps({
         default: '',
     },
 });
-
-const products = reactive([
-    {
-        id: 1,
-        name: 'sdjfjsdf',
-        image: '/assets/images/test_coffee.png',
-        type: 1,
-        price: 325,
-    },
-    {
-        id: 2,
-        name: 'sdjfjsdf',
-        image: '/assets/images/test_coffee.png',
-        type: 1,
-        price: 325,
-    },
-    {
-        id: 3,
-        name: 'sdjfjsdf',
-        image: '/assets/images/test_coffee.png',
-        type: 1,
-        price: 325,
-    },
-    {
-        id: 4,
-        name: 'sdjfjsdf',
-        image: '/assets/images/test_coffee.png',
-        type: 1,
-        price: 325,
-    },
-    {
-        id: 3,
-        name: 'sdjfjsdf',
-        image: '/assets/images/test_coffee.png',
-        type: 1,
-        price: 325,
-    },
-    {
-        id: 4,
-        name: 'sdjfjsdf',
-        image: '/assets/images/test_coffee.png',
-        type: 1,
-        price: 325,
-    },
-    {
-        id: 3,
-        name: 'sdjfjsdf',
-        image: '/assets/images/test_coffee.png',
-        type: 1,
-        price: 325,
-    },
-    {
-        id: 4,
-        name: 'sdjfjsdf',
-        image: '/assets/images/test_coffee.png',
-        type: 1,
-        price: 325,
-    },
-    {
-        id: 3,
-        name: 'sdjfjsdf',
-        image: '/assets/images/test_coffee.png',
-        type: 1,
-        price: 325,
-    },
-]);
 </script>
 
 <style scoped lang="scss">
