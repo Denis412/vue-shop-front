@@ -9,13 +9,13 @@
                     {{ $t('banner.subtitle') }}
                 </p>
 
-                <app-button :label="$t('banner.button')" />
+                <app-button :label="$t('banner.button')" @click="redirectToMenu" />
             </div>
 
             <div class="home-page__banner_img__container" />
         </div>
 
-        <file-uploader @updateUrl="onUpdateUrl" />
+        <!-- <file-uploader @updateUrl="onUpdateUrl" /> -->
 
         <home-page-section :title="$t('services.title')">
             <service-cards-list />
@@ -40,7 +40,7 @@ import { ref, onBeforeMount } from 'vue';
 import { ServiceCardsList } from '@widgets/ServiceCardsList';
 import { ProductsList } from '@widgets/ProductsList';
 import { TheMainPage } from '@widgets/TheMainPage';
-import { FileUploader } from '../../../features/FileUpload';
+// import { FileUploader } from '../../../features/FileUpload';
 import HomePageSection from './HomePageSection.vue';
 import { useRouter } from 'vue-router';
 import axios from '@app/axios';
@@ -50,9 +50,9 @@ const router = useRouter();
 
 const productsResult = ref([]);
 
-const onUpdateUrl = async (url) => {
-    console.log('url', url);
-};
+// const onUpdateUrl = async (url) => {
+//     console.log('url', url);
+// };
 
 // const products = reactive([
 //     {
