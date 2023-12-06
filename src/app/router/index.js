@@ -9,7 +9,7 @@ const router = createRouter({
 router.beforeEach((to) => {
     if (to.meta.isAuthenticated) {
         const isAuth = localStorage.getItem('username');
-        if (!isAuth) return { name: 'auth' };
+        if (!isAuth) return { name: 'login' };
     }
 
     return true;
