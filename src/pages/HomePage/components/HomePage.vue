@@ -127,7 +127,7 @@ const redirectToMenu = async () => {
 };
 
 onBeforeMount(async () => {
-    const { data: productsData } = await axios.post('https://localhost:3000/product/all', {
+    const { data: productsData } = await axios.post('product/all', {
         page: 1,
         perPage: 100,
     });

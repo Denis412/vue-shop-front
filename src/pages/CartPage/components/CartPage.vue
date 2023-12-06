@@ -117,7 +117,9 @@ const onPlacing = () => {
 };
 
 const onCreateOrder = async () => {
-    await createOrder(productsResult.value);
+    if (!email.value?.trim().length) return;
+
+    await createOrder(productsResult.value, email.value);
 
     productsResult.value = [];
 };
