@@ -1,14 +1,6 @@
 <template>
     <div class="main-header__menu">
-        <icon-with-label
-            v-for="item in items"
-            :key="item.label"
-            :icon="item.icon"
-            :label="item.label"
-            :notify="item.notify"
-            pointer
-            @click="item.handler()"
-        />
+        <main-header-menu-item v-for="item in items" :key="item.label" :item="item" />
 
         <language-switch-with-icon />
         <app-icon
@@ -24,7 +16,7 @@
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { IconWithLabel } from '@features/IconWithLabel';
+import MainHeaderMenuItem from './MainHeaderMenuItem.vue';
 import { LanguageSwitchWithIcon, useSwitchLocale } from '@features/LanguageSwitch';
 import axios from '@app/axios';
 
