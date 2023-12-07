@@ -35,6 +35,7 @@ const cards = reactive([
 <style scoped lang="scss">
 .service__cards {
     display: flex;
+    justify-content: center;
     width: 100%;
     gap: 32px;
 }

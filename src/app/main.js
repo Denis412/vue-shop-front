@@ -20,6 +20,7 @@ import {
     AppFooter,
     AppCard,
     AppForm,
+    AppNotification,
 } from '@shared';
 
 const app = createApp(App, {
@@ -45,5 +46,6 @@ app.component('AppHeader', AppHeader);
 app.component('AppFooter', AppFooter);
 app.component('AppCard', AppCard);
 app.component('AppForm', AppForm);
+app.component('AppNotification', AppNotification);
 
 app.mount('#app');

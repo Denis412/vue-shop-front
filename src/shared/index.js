@@ -14,3 +14,4 @@ export { default as AppHeader } from './components/AppHeader.vue';
 export { default as AppFooter } from './components/AppFooter.vue';
 export { default as AppCard } from './components/AppCard.vue';
 export { default as AppForm } from './components/AppForm.vue';
+export { default as AppNotification } from './components/AppNotification.vue';

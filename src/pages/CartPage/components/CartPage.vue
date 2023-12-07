@@ -90,6 +90,8 @@
         </div>
 
         <placing-an-order-popup v-model="isNotValidEmail" />
+
+        <app-notification v-model="isCreatedOrder" label="Заказ создан" />
     </the-main-page>
 </template>
 
@@ -104,6 +106,7 @@ const productsResult = ref([]);
 
 const email = ref('');
 const isNotValidEmail = ref(false);
+const isCreatedOrder = ref(false);
 
 const allPrice = computed(() =>
     productsResult.value.reduce((sum, product) => sum + product.product.price * product.count, 0),
@@ -117,10 +120,13 @@ const onPlacing = () => {
 };
 
 const onCreateOrder = async () => {
-    if (!email.value?.trim().length) return;
+    if (!email.value?.trim().length || !productsResult.value?.length) return;
 
     await createOrder(productsResult.value, email.value);
 
+    isCreatedOrder.value = true;
+
+    email.value = '';
     productsResult.value = [];
 };
 

@@ -22,12 +22,15 @@
                     </div>
                 </div>
             </div>
+
+            <app-notification v-model="isNotify" label="Товар добавлен в корзину" />
         </div>
         <!-- <pre>{{ product }}</pre> -->
     </app-card>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import axios from '@app/axios';
 
 const props = defineProps({
@@ -37,6 +40,8 @@ const props = defineProps({
         default: () => ({}),
     },
 });
+
+const isNotify = ref(false);
 
 const onAddToCart = async () => {
     await axios.post(
@@ -50,6 +55,8 @@ const onAddToCart = async () => {
             withCredentials: true,
         },
     );
+
+    isNotify.value = true;
 };
 </script>
 
