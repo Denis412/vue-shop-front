@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <app-form class="plain-order__form" @submit="onPlacing">
+            <app-form class="plain-order__form">
                 <label>
                     Почта:
                     <app-input
@@ -61,6 +61,19 @@
                         style="margin-top: 16px"
                     />
                 </label>
+
+                <div class="coupon__container">
+                    <label>
+                        Купон:
+                        <app-input
+                            v-model="coupon"
+                            placeholder="Введите купон"
+                            style="margin-top: 16px"
+                        />
+                    </label>
+
+                    <app-button label="Применить" @click.stop="onAcceptCoupon" />
+                </div>
 
                 <div class="plain-section">
                     <header class="plain-section__header flex w-100p justify-between">
@@ -72,7 +85,17 @@
                     <div class="plain-section__final flex w-100p justify-between">
                         <span>ИТОГО</span>
 
-                        <span>{{ allPrice }} Р</span>
+                        <!-- <pre>{{ couponObject }}</pre> -->
+
+                        <span
+                            :class="{
+                                discount: couponObject,
+                            }"
+                        >
+                            {{ allPrice }} Р
+                        </span>
+
+                        <span v-if="couponObject">{{ allDiscountPrice }} Р</span>
                     </div>
 
                     <app-button
@@ -92,6 +115,7 @@
         <placing-an-order-popup v-model="isNotValidEmail" />
 
         <app-notification v-model="isCreatedOrder" label="Заказ создан" />
+        <app-notification v-model="isCouponNotFound" label="Купон не найден" />
     </the-main-page>
 </template>
 
@@ -104,30 +128,60 @@ import axios from '@app/axios';
 
 const productsResult = ref([]);
 
+const couponObject = ref(null);
+const coupon = ref('');
 const email = ref('');
 const isNotValidEmail = ref(false);
+const isCouponNotFound = ref(false);
 const isCreatedOrder = ref(false);
 
 const allPrice = computed(() =>
     productsResult.value.reduce((sum, product) => sum + product.product.price * product.count, 0),
 );
+const allDiscountPrice = computed(
+    () =>
+        allPrice.value -
+        allPrice.value * (couponObject.value ? couponObject.value.discount / 100 : 1),
+);
+
 const allCount = computed(() =>
     productsResult.value.reduce((sum, product) => sum + product.count, 0),
 );
 
-const onPlacing = () => {
-    if (!email.value?.trim().length) isNotValidEmail.value = true;
-};
+// const onPlacing = () => {
+//     if (!email.value?.trim().length) isNotValidEmail.value = true;
+// };
 
 const onCreateOrder = async () => {
+    if (!email.value?.trim().length) {
+        isNotValidEmail.value = true;
+        return;
+    }
     if (!email.value?.trim().length || !productsResult.value?.length) return;
 
-    await createOrder(productsResult.value, email.value);
+    await createOrder(
+        productsResult.value,
+        email.value,
+        allDiscountPrice.value ? allDiscountPrice.value : allPrice.value,
+    );
+
+    couponObject.value = null;
 
     isCreatedOrder.value = true;
 
     email.value = '';
     productsResult.value = [];
+};
+
+const onAcceptCoupon = async () => {
+    const couponResult = await axios.get(`coupon/${coupon.value}`);
+
+    if (!Object.keys(couponResult?.data).length) {
+        isCouponNotFound.value = true;
+        return;
+    }
+
+    couponObject.value = couponResult.data;
 };
 
 const onDecrement = async (product) => {
@@ -211,10 +265,22 @@ onBeforeMount(async () => {
     min-height: 196px;
 }
 
+.discount {
+    text-decoration: line-through;
+}
+
 .cart-list__item_label {
 }
 
 .cart-list__item_price {
+}
+
+.coupon__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8px;
 }
 
 .cart-list__item_counter {
