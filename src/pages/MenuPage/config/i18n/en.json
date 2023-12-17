@@ -1,0 +1,11 @@
+{
+    "menuPage": {
+        "title": "Menu",
+        "tabs": {
+            "all": "All",
+            "coffee": "Coffee",
+            "coldDrinks": "Cold drinks",
+            "desserts": "Desserts"
+        }
+    }
+}

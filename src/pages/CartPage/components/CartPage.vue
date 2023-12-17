@@ -1,6 +1,6 @@
 <template>
     <the-main-page class="text-primary">
-        <h2 class="text-h2 text-center mt-68 mb-120">Корзина</h2>
+        <h2 class="text-h2 text-center mt-68 mb-120">{{ $t('cartPage.title') }}</h2>
 
         <div class="content">
             <div class="cart-list">
@@ -47,16 +47,16 @@
                 </template>
 
                 <div v-else class="flex items-center justify-center h-100p">
-                    <h2 class="text-h2 text-center">Корзина пуста</h2>
+                    <h2 class="text-h2 text-center">{{ $t('cartPage.empty') }}</h2>
                 </div>
             </div>
 
             <app-form class="plain-order__form">
                 <label>
-                    Почта:
+                    {{ $t('cartPage.form.email.label') }}:
                     <app-input
                         v-model="email"
-                        placeholder="Введите почту"
+                        :placeholder="$t('cartPage.form.email.placeholder')"
                         type="email"
                         style="margin-top: 16px"
                     />
@@ -64,26 +64,32 @@
 
                 <div class="coupon__container">
                     <label>
-                        Купон:
+                        {{ $t('cartPage.form.coupon.label') }}:
                         <app-input
                             v-model="coupon"
-                            placeholder="Введите купон"
+                            :placeholder="$t('cartPage.form.coupon.placeholder')"
                             style="margin-top: 16px"
                         />
                     </label>
 
-                    <app-button label="Применить" @click.stop="onAcceptCoupon" />
+                    <app-button
+                        :label="$t('cartPage.form.coupon.button')"
+                        @click.stop="onAcceptCoupon"
+                    />
                 </div>
 
                 <div class="plain-section">
                     <header class="plain-section__header flex w-100p justify-between">
-                        <span>Товары, {{ allCount }} шт.</span>
+                        <span>
+                            {{ $t('cartPage.form.products') }}, {{ allCount }}
+                            {{ $t('cartPage.form.length') }}
+                        </span>
 
                         <span>{{ allPrice }} Р</span>
                     </header>
 
                     <div class="plain-section__final flex w-100p justify-between">
-                        <span>ИТОГО</span>
+                        <span>{{ $t('cartPage.form.all') }}</span>
 
                         <!-- <pre>{{ couponObject }}</pre> -->
 
@@ -99,14 +105,14 @@
                     </div>
 
                     <app-button
-                        label="Заказать"
+                        :label="$t('cartPage.form.button')"
                         class="w-100p"
                         type="submit"
                         @click="onCreateOrder"
                     />
 
                     <footer class="plain-section__footer">
-                        После оплаты, чек придёт на вашу электронную почту
+                        {{ $t('cartPage.form.notification') }}
                     </footer>
                 </div>
             </app-form>
@@ -114,8 +120,8 @@
 
         <placing-an-order-popup v-model="isNotValidEmail" />
 
-        <app-notification v-model="isCreatedOrder" label="Заказ создан" />
-        <app-notification v-model="isCouponNotFound" label="Купон не найден" />
+        <app-notification v-model="isCreatedOrder" :label="$t('cartPage.orderNotify')" />
+        <app-notification v-model="isCouponNotFound" :label="$t('cartPage.couponNotify')" />
     </the-main-page>
 </template>
 
@@ -174,6 +180,8 @@ const onCreateOrder = async () => {
 };
 
 const onAcceptCoupon = async () => {
+    if (!coupon.value?.trim().length) return;
+
     const couponResult = await axios.get(`coupon/${coupon.value}`);
 
     if (!Object.keys(couponResult?.data).length) {

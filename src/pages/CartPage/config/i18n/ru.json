@@ -1,0 +1,24 @@
+{
+    "cartPage": {
+        "title": "Корзина",
+        "empty": "Корзина пуста",
+        "orderNotify": "Заказ создан",
+        "couponNotify": "Купон не найден",
+        "form": {
+            "email": {
+                "label": "Почта",
+                "placeholder": "Введите почту"
+            },
+            "coupon": {
+                "label": "Купон",
+                "placeholder": "Введите купон",
+                "button": "Применить"
+            },
+            "products": "Товары",
+            "length": "шт.",
+            "all": "Итого",
+            "button": "Заказать",
+            "notification": "После оплаты, чек придёт на вашу электронную почту"
+        }
+    }
+}

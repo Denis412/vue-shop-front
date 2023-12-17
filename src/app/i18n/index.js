@@ -9,8 +9,10 @@ const messages = {
 for (const path in languageModules) {
     const mod = await languageModules[path]();
 
-    if (path.includes('en')) Object.assign(messages.en, mod);
-    else Object.assign(messages.ru, mod);
+    console.log('mod', mod, messages, path);
+
+    if (path.includes('en.')) Object.assign(messages.en, mod);
+    else if (path.includes('ru.')) Object.assign(messages.ru, mod);
 }
 
 const i18n = createI18n({

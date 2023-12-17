@@ -1,0 +1,16 @@
+{
+    "footer": {
+        "nav": {
+            "title": "Navigation",
+            "main": "Main",
+            "menu": "Menu",
+            "basket": "Basket"
+        },
+        "contacts": {
+            "title": "Contacts",
+            "address": "Moscow, Aviamotornaya str., 8A",
+            "email": "Fragrante@mail.ru",
+            "phone": "+7 (999) 999-99-99"
+        }
+    }
+}

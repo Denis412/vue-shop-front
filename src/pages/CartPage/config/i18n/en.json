@@ -1,0 +1,24 @@
+{
+    "cartPage": {
+        "title": "Basket",
+        "empty": "Basket is empty",
+        "orderNotify": "Order created",
+        "couponNotify": "Coupon not found",
+        "form": {
+            "email": {
+                "label": "Email",
+                "placeholder": "Enter email"
+            },
+            "coupon": {
+                "label": "Coupon",
+                "placeholder": "Enter coupon",
+                "button": "Apply"
+            },
+            "products": "Goods",
+            "length": "pcs.",
+            "all": "Total",
+            "button": "To order",
+            "notification": "After payment, the receipt will be sent to your email"
+        }
+    }
+}

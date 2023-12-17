@@ -3,20 +3,20 @@
         <div class="main-footer__inner">
             <div class="flex">
                 <div class="main-footer__navigation">
-                    <div class="main-footer__inner_title">Навигация</div>
+                    <div class="main-footer__inner_title">{{ $t('footer.nav.title') }}</div>
 
-                    <router-link :to="{ name: 'home' }">Главная</router-link>
-                    <router-link :to="{ name: 'menu' }">Меню</router-link>
-                    <router-link :to="{ name: 'cart' }">Корзина</router-link>
+                    <router-link :to="{ name: 'home' }">{{ $t('footer.nav.main') }}</router-link>
+                    <router-link :to="{ name: 'menu' }">{{ $t('footer.nav.menu') }}</router-link>
+                    <router-link :to="{ name: 'cart' }">{{ $t('footer.nav.basket') }}</router-link>
                 </div>
 
                 <div class="main-footer__contacts">
-                    <div class="main-footer__inner_title">Контакты</div>
+                    <div class="main-footer__inner_title">{{ $t('footer.contacts.title') }}</div>
 
                     <icon-with-label
                         icon="geodata"
                         fill-icon="white"
-                        label="г. Москва, Авиамоторная ул., 8А"
+                        :label="$t('footer.contacts.address')"
                         gap="0.5rem"
                         text-class="max-content"
                     />

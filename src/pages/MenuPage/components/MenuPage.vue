@@ -1,6 +1,6 @@
 <template>
     <the-main-page class="text-primary">
-        <h2 class="text-h2 text-center mt-68 mb-120">Меню</h2>
+        <h2 class="text-h2 text-center mt-68 mb-120">{{ $t('menuPage.title') }}</h2>
 
         <menu-tabs v-model="filter" @filter="onFilter" />
 

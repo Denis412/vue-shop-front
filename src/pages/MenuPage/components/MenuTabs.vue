@@ -11,8 +11,11 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import MenuTab from './MenuTab.vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n({ useScope: 'global' });
 
 defineProps({
     modelValue: {
@@ -26,12 +29,12 @@ const emit = defineEmits({
 
 const tabs = reactive([
     {
-        title: 'Всё',
+        title: computed(() => t('menuPage.tabs.all')),
         filter: null,
         selected: true,
     },
     {
-        title: 'Кофе',
+        title: computed(() => t('menuPage.tabs.coffee')),
         filter: {
             column: 'category.id',
             operator: 'EQ',
@@ -40,7 +43,7 @@ const tabs = reactive([
         selected: false,
     },
     {
-        title: 'Холодные напитки',
+        title: computed(() => t('menuPage.tabs.coldDrinks')),
         filter: {
             column: 'category.id',
             operator: 'EQ',
@@ -49,7 +52,7 @@ const tabs = reactive([
         selected: false,
     },
     {
-        title: 'Десерты',
+        title: computed(() => t('menuPage.tabs.desserts')),
         filter: {
             column: 'category.id',
             operator: 'EQ',
