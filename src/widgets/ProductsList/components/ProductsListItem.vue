@@ -4,11 +4,13 @@
             <img class="product__item_img" :src="product.image" alt="Картинка товара" />
 
             <div class="product__item-type mb-16 mt-16">
-                <span>{{ product.type }} тип</span>
+                <span>{{ product.type }} {{ $t('productsList.item.type') }}</span>
             </div>
 
             <div class="product__item-name">
-                <span class="text-card-title">{{ product.label }}</span>
+                <span class="text-card-title">{{
+                    product[locale === 'ru' ? 'label' : 'label_en']
+                }}</span>
             </div>
 
             <div class="product__item-price">
@@ -32,6 +34,9 @@
 <script setup>
 import { ref } from 'vue';
 import axios from '@app/axios';
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n({ useScope: 'global' });
 
 const props = defineProps({
     product: {

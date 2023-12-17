@@ -23,7 +23,7 @@
                         />
 
                         <div class="cart-list__item_label text-card-title">
-                            {{ product.product.label }}
+                            {{ product.product[locale === 'ru' ? 'label' : 'label_en'] }}
                         </div>
 
                         <div class="cart-list__item_counter">
@@ -131,6 +131,9 @@ import { TheMainPage } from '@widgets/TheMainPage';
 import { computed, onBeforeMount, ref } from 'vue';
 import createOrder from '../api/createOrder';
 import axios from '@app/axios';
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n({ useScope: 'global' });
 
 const productsResult = ref([]);
 
