@@ -7,27 +7,31 @@
 <script setup>
 import { reactive } from 'vue';
 import ServiceCard from './ServiceCard.vue';
+import { useI18n } from 'vue-i18n';
+import { computed } from 'vue';
+
+const { t } = useI18n({ useScope: 'global' });
 
 const cards = reactive([
     {
         image: 'equipment',
-        text: 'Оборудование',
+        text: computed(() => t('services.list.equipment')),
     },
     {
         image: 'coffee_options',
-        text: 'Варианты кофе',
+        text: computed(() => t('services.list.coffeeOptions')),
     },
     {
         image: 'coffee',
-        text: 'Кофе с собой',
+        text: computed(() => t('services.list.coffee')),
     },
     {
         image: 'confectionery',
-        text: 'Кондитерские изделия',
+        text: computed(() => t('services.list.confectionery')),
     },
     {
         image: 'selected_grains',
-        text: 'Отборные зерна',
+        text: computed(() => t('services.list.selectedGrains')),
     },
 ]);
 </script>

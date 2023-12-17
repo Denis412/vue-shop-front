@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <app-notification v-model="isNotify" label="Товар добавлен в корзину" />
+            <app-notification v-model="isNotify" :label="$t('productsList.item.addToCart')" />
         </div>
         <!-- <pre>{{ product }}</pre> -->
     </app-card>

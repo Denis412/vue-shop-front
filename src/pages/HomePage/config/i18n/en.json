@@ -5,7 +5,14 @@
         "button": "Open menu"
     },
     "services": {
-        "title": "A combination of culture, coffee and first-class service"
+        "title": "A combination of culture, coffee and first-class service",
+        "list": {
+            "equipment": "Equipment",
+            "coffeeOptions": "Coffee options",
+            "coffee": "Coffee to go",
+            "confectionery": "Confectionery products",
+            "selectedGrains": "Selected grains"
+        }
     },
     "popularity": {
         "title": "Popular positions",

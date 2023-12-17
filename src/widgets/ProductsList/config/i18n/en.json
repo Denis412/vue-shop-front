@@ -1,7 +1,8 @@
 {
     "productsList": {
         "item": {
-            "type": "type"
+            "type": "type",
+            "addToCart": "Product added to cart"
         }
     }
 }

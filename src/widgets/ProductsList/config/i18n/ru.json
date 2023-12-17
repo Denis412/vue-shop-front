@@ -1,7 +1,8 @@
 {
     "productsList": {
         "item": {
-            "type": "тип"
+            "type": "тип",
+            "addToCart": "Товар добавлен в корзину"
         }
     }
 }
